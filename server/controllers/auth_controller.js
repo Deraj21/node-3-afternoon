@@ -4,7 +4,7 @@ let id = 1;
 module.exports = {
   login: (req, res, next) => {
     let { username, password } = req.body;
-    let currentUser = users.filter(user => (user.username === username && user.password === password) )[0];
+    let currentUser = users.find(user => (user.username === username && user.password === password));
     if (currentUser){
       req.session.user.username = currentUser.username;
       res.status(200).send(currentUser);
